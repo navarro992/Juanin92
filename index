@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carta de Aniversario — Juan Carlos a Karen</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+–parchment: #f5ead0;
+–parchment-dark: #e8d5a8;
+–ink: #2c1810;
+–ink-faded: #5a3a28;
+–sepia: #8b5e3c;
+–gold: #c4952a;
+–gold-light: #e8c97a;
+–red-wax: #8b1a1a;
+}
+
+body {
+background: #1a0f08;
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 40px 20px;
+font-family: ‘Cormorant Garamond’, serif;
+background-image:
+radial-gradient(ellipse at 20% 20%, #2a1208 0%, transparent 60%),
+radial-gradient(ellipse at 80% 80%, #0f0a05 0%, transparent 60%);
+}
+
+.envelope-wrapper {
+width: 100%;
+max-width: 720px;
+animation: fadeIn 2s ease forwards;
+opacity: 0;
+}
+
+@keyframes fadeIn {
+to { opacity: 1; }
+}
+
+.letter-page {
+background: var(–parchment);
+position: relative;
+padding: 60px 70px 70px;
+box-shadow:
+0 0 0 1px var(–parchment-dark),
+0 0 0 3px var(–sepia),
+0 4px 8px rgba(0,0,0,0.4),
+0 20px 60px rgba(0,0,0,0.6),
+inset 0 0 80px rgba(139,94,60,0.15);
+background-image:
+radial-gradient(ellipse at 10% 10%, rgba(139,94,60,0.12) 0%, transparent 50%),
+radial-gradient(ellipse at 90% 90%, rgba(139,94,60,0.10) 0%, transparent 50%),
+repeating-linear-gradient(
+0deg,
+transparent,
+transparent 28px,
+rgba(139,94,60,0.06) 28px,
+rgba(139,94,60,0.06) 29px
+);
+}
+
+.letter-page::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘400’ height=‘400’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3CfeColorMatrix type=‘saturate’ values=‘0’/%3E%3C/filter%3E%3Crect width=‘400’ height=‘400’ filter=‘url(%23noise)’ opacity=‘0.04’/%3E%3C/svg%3E”);
+pointer-events: none;
+opacity: 0.6;
+}
+
+.corner {
+position: absolute;
+width: 60px;
+height: 60px;
+color: var(–gold);
+font-size: 36px;
+line-height: 1;
+opacity: 0.55;
+}
+.corner.tl { top: 12px; left: 14px; }
+.corner.tr { top: 12px; right: 14px; transform: scaleX(-1); }
+.corner.bl { bottom: 12px; left: 14px; transform: scaleY(-1); }
+.corner.br { bottom: 12px; right: 14px; transform: scale(-1,-1); }
+
+.ornament-line {
+text-align: center;
+color: var(–gold);
+font-size: 20px;
+letter-spacing: 6px;
+margin: 18px 0;
+opacity: 0.7;
+}
+
+.date-location {
+text-align: right;
+font-family: ‘IM Fell English’, serif;
+font-style: italic;
+font-size: 14px;
+color: var(–ink-faded);
+margin-bottom: 28px;
+letter-spacing: 0.5px;
+}
+
+.salutation {
+font-family: ‘Playfair Display’, serif;
+font-style: italic;
+font-size: 22px;
+color: var(–ink);
+margin-bottom: 24px;
+}
+
+p {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 17px;
+line-height: 1.85;
+color: var(–ink);
+text-align: justify;
+margin-bottom: 16px;
+text-indent: 32px;
+font-weight: 300;
+}
+
+.office-ref {
+margin: 28px 0;
+padding: 16px 22px;
+border-left: 3px solid var(–gold);
+background: rgba(196,149,42,0.08);
+position: relative;
+}
+
+.office-ref::before {
+content: ‘❝’;
+position: absolute;
+top: -10px;
+left: 10px;
+font-size: 32px;
+color: var(–gold);
+opacity: 0.5;
+line-height: 1;
+}
+
+.office-ref-title {
+font-family: ‘Playfair Display’, serif;
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 6px;
+display: block;
+}
+
+.office-ref p {
+font-style: italic;
+font-size: 15px;
+color: var(–ink-faded);
+text-indent: 0;
+margin: 0;
+line-height: 1.7;
+}
+
+.closing {
+margin-top: 36px;
+text-align: right;
+}
+
+.closing-phrase {
+font-family: ‘IM Fell English’, serif;
+font-style: italic;
+font-size: 16px;
+color: var(–ink-faded);
+margin-bottom: 40px;
+display: block;
+text-align: right;
+}
+
+.signature-area { text-align: right; }
+
+.signature-pre {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 15px;
+color: var(–ink-faded);
+margin-bottom: 4px;
+font-style: italic;
+}
+
+.signature {
+font-family: ‘Playfair Display’, serif;
+font-size: 32px;
+font-style: italic;
+color: var(–ink);
+letter-spacing: 1px;
+line-height: 1.2;
+}
+
+.wax-seal {
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 36px;
+gap: 16px;
+}
+
+.seal-line {
+flex: 1;
+height: 1px;
+background: linear-gradient(to right, transparent, var(–gold), transparent);
+opacity: 0.5;
+}
+
+.seal {
+width: 60px;
+height: 60px;
+background: var(–red-wax);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 24px;
+box-shadow:
+0 2px 8px rgba(139,26,26,0.6),
+inset 0 1px 3px rgba(255,255,255,0.15);
+position: relative;
+}
+
+.seal::after {
+content: ‘’;
+position: absolute;
+inset: 4px;
+border-radius: 50%;
+border: 1px solid rgba(255,255,255,0.15);
+}
+
+.postscript {
+margin-top: 30px;
+padding-top: 20px;
+border-top: 1px dashed rgba(139,94,60,0.3);
+}
+
+.postscript p {
+font-size: 14.5px;
+color: var(–ink-faded);
+text-indent: 0;
+margin: 0;
+}
+
+.postscript strong {
+font-family: ‘Playfair Display’, serif;
+font-weight: 600;
+color: var(–sepia);
+}
+
+.letter-title {
+text-align: center;
+margin-bottom: 10px;
+}
+
+.letter-title h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: 13px;
+font-weight: 400;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–gold);
+opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+.letter-page { padding: 40px 28px 50px; }
+p { font-size: 15.5px; }
+.salutation { font-size: 19px; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="envelope-wrapper">
+  <div class="letter-page">
+
+```
+<div class="corner tl">❧</div>
+<div class="corner tr">❧</div>
+<div class="corner bl">❧</div>
+<div class="corner br">❧</div>
+
+<div class="letter-title">
+  <h1>Carta de Aniversario</h1>
+</div>
+<div class="ornament-line">— ✦ —</div>
+
+<div class="date-location">
+  8 de Abril de 2026
+</div>
+
+<div class="salutation">Mi más amada y adorada Karen Luna,</div>
+
+<p>
+  Tomo la pluma con el corazón desbordante de ternura, pues hoy, en este dichoso 8 de abril, celebramos nuestro último aniversario como novios. El próximo año, en el glorioso mes de agosto, nos uniremos como esposos ante Dios y los hombres, y solo de imaginarlo un estremecimiento de pura alegría recorre cada fibra de mi ser. Este aniversario no es una fecha más: es el umbral de la más grande aventura que dos almas puedan emprender juntas, el inicio del camino hacia nuestra propia familia.
+</p>
+
+<div class="office-ref">
+  <span class="office-ref-title">✦ Como Jim & Pam — The Office, Temporada 2, "Casino Night" (2x22)</span>
+  <p>En aquella noche de casino, Jim Halpert finalmente dijo en voz alta lo que su corazón llevaba años callando. A veces el amor más verdadero es también el más paciente: aguarda el momento justo y entonces habla sin titubear.</p>
+</div>
+
+<p>
+  Mientras veo The Office, no puedo evitar compararnos con Jim y Pam. Nosotros también nos conocimos en el lugar y el momento perfectos, en Ford, y desde entonces mi vida cambió para siempre. Doy gracias a Dios por haberte encontrado, porque desde aquel primer baile supe que tú eras la persona que había estado buscando. Mi corazón me lo dijo con una claridad que no admitía dudas: <em>"Ella es la indicada. No busques más."</em>
+</p>
+
+<div class="office-ref">
+  <span class="office-ref-title">✦ La distancia que revela la verdad — The Office, Temporada 3, "The Return" (3x14)</span>
+  <p>Jim se trasladó a Stamford creyendo que la lejanía apagaría lo que sentía, pero solo descubrió que ese fuego era imposible de extinguir. Alejarse del amor verdadero no lo borra; lo confirma.</p>
+</div>
+
+<p>
+  Confieso que hubo un tiempo en que me alejé, pensando que quizá ya tenías a alguien más. Pero cuando volvimos a compartir momentos, cuando me invitaste a aquella boda, entendí que no debía rendirme. Por eso insistí, porque mi corazón sabía que valía la pena luchar por ti.
+</p>
+
+<div class="office-ref">
+  <span class="office-ref-title">✦ La propuesta perfectamente imperfecta — The Office, Temporada 5, "Weight Loss" (5x01)</span>
+  <p>Jim detuvo el coche en una estación de gasolina bajo la lluvia y le propuso matrimonio a Pam sin anillos ni escenarios elaborados, solo con el peso de un amor que ya no podía contenerse. Los momentos más grandes no siempre lucen grandes por fuera.</p>
+</div>
+
+<p>
+  Por eso insistí. Por eso volví. Porque mi corazón —ese fiel guardián que nunca miente— me repetía sin cesar que tú, Karen Luna, valías cada esfuerzo, cada instante de incertidumbre, cada paso dado en la oscuridad. Y míranos ahora: juntos, celebrando nuestro amor, construyendo sueños y preparándonos para todo lo que viene.
+</p>
+
+<div class="office-ref">
+  <span class="office-ref-title">✦ La boda que lo selló todo — The Office, Temporada 6, "Niagara" (6x04 & 6x05)</span>
+  <p>Jim y Pam escaparon del bullicio de sus invitados para casarse en silencio frente a las cataratas, solo ellos dos. Porque el amor verdadero, en su forma más pura, no necesita público: solo necesita a la otra persona.</p>
+</div>
+
+<p>
+  No puedo contener la alegría que me desborda al saber que muy pronto emularemos a esa pareja que tanto admiramos — no como personajes de una serie, sino como protagonistas de nuestra propia historia, la más hermosa que jamás pude imaginar. El próximo agosto, ante el altar y ante Dios, te elegiré a ti, Karen, como te elegí aquel primer día, y como te elegiré cada mañana que amanezca a tu lado.
+</p>
+
+<div class="ornament-line" style="margin-top: 28px;">— ✦ —</div>
+
+<div class="closing">
+  <span class="closing-phrase">
+    Con el amor más sincero y profundo que estas manos puedan escribir,<br>
+    y con el alma enteramente consagrada a ti,
+  </span>
+
+  <div class="signature-area">
+    <div class="signature-pre">Tu amado, tu futuro esposo,</div>
+    <div class="signature">Juan Carlos ♡</div>
+  </div>
+</div>
+
+<div class="wax-seal">
+  <div class="seal-line"></div>
+  <div class="seal">♡</div>
+  <div class="seal-line"></div>
+</div>
+
+<div class="postscript">
+  <p><strong>P.D.</strong> — Como Jim le dijo a Pam cuando ella le preguntó si estaba seguro: <em>"Absolutamente."</em> Eso mismo te digo yo a ti, Karen Luna, sin sombra de duda. <em>That's what he said.</em> 🤍</p>
+</div>
+```
+
+  </div>
+</div>
+
+</body>
+</html>
